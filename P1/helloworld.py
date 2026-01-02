@@ -2,5 +2,5 @@
 
 def greet():
     # Update below line of code to finish assignment
-    return ""
+    return "Hello, World!"
 # END OF CODE

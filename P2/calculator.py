@@ -1,12 +1,13 @@
 def add(num1, num2):
     result = 0
-
+    result = num1 + num2
     # Add your addition logic here
 
     return result
 
 def subtract(num1, num2):
     result = 0
+    result = num1 - num2
 
     # Add your subtraction logic here
 
@@ -14,6 +15,7 @@ def subtract(num1, num2):
 
 def multiply(num1, num2):
     result = 0
+    result = num1 * num2
 
     # Add your multiplication logic here
 
@@ -21,13 +23,31 @@ def multiply(num1, num2):
 
 def divide(num1, num2):
     result = 0
-
-    # Add your division logic here
-
-    return result
+    if num2 == 0:
+        return "ERROR!"
+    else:
+        result = num1 / num2
+        return result
 
 def calculator(num1, num2, operator, resultType):
     result = 0
+    if operator == "+":
+        result = add(num1, num2)
+    elif operator == "-":
+        result = subtract(num1, num2)
+    elif operator == "*":
+        result = multiply(num1, num2)
+    elif operator == "/":
+        if num2 == 0:
+            return "ERROR!"
+        else:
+            result = divide(num1, num2)
+    if resultType == "f":
+        return float(result)
+    elif resultType == "i":
+        return int(result)
+    
+    
 
     # Add conditional (operator) logic here
 

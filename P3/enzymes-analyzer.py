@@ -12,6 +12,15 @@ by following the comments provided.
 
 
 def classify_activity(activity_value):
+    if activity_value < 40 :
+        result = 'low'
+    elif 40 <= activity_value <= 70 :
+        result = 'normal'
+    elif activity_value > 70 :
+        result = 'high'
+    return result
+
+
     """
     Classifies a single enzyme activity value.
 
@@ -30,6 +39,8 @@ def classify_activity(activity_value):
     pass
 
 def analyze_activities(activity_list):
+    
+
     """
     Analyzes a list of enzyme activity values.
 
@@ -53,24 +64,50 @@ def analyze_activities(activity_list):
     normal_count = 0
     high_count = 0
     normal_values = []
+    average_activity = None
+    
 
     # Loop through each activity value in the list
     # - Add the value to total_activity
     # - Classify the value using classify_activity()
     # - Update the appropriate counter
     # - Store normal activity values in normal_values
+    for x in activity_list:
+        total_activity += x
+        classify = classify_activity(x)
+        if classify == 'low':
+            low_count += 1
+        elif classify == 'normal':
+            normal_count += 1
+            normal_values.append(x)
+        elif classify == 'high':
+            high_count += 1
+        
+    
+
+        
+
 
 
     # Calculate the average enzyme activity
     # (Total activity divided by number of samples)
-    average_activity = None
+    
     
 
     # Determine the minimum and maximum activity values
     # Use built-in Python functions for lists
-    min_activity = None
-    max_activity = None
     
+    if len(activity_list) == 0:
+        average_activity =  None
+        min_activity = None
+        max_activity = None
+    else:
+        average_activity = total_activity / len(activity_list)
+        min_activity = min(activity_list)
+        max_activity = max(activity_list)
+
+    
+
 
     # Store all results in a dictionary and return it
     return {
